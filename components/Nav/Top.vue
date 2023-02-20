@@ -1,6 +1,6 @@
 <template>
     <div class="flex sm:justify-center space-x-4" style="cursor: pointer;">
-        <img src="../../youtube.png" @click="openChannel" />
+        <img src="@/static/youtube.png" @click="openChannel" />
     </div>
 </template>
 
