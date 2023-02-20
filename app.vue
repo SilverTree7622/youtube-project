@@ -1,9 +1,5 @@
 <template>
-	<div>
+	<div class="grid place-items-center h-screen">
 		<NuxtPage />
 	</div>
 </template>
-
-<script setup>
-
-</script>
