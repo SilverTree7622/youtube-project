@@ -1,6 +1,5 @@
 <template>
     <div>
-        <NavTop />
         <ContentHeader />
         <Nuxt />
         <NavBottom />
