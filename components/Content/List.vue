@@ -1,18 +1,21 @@
 <template>
     <div
-        class="flex flex-row justify-evenly w-auto"
-        @mouseover="isActive = true"
+        class="flex flex-row justify-around w-auto"
+        @mousedown="onPtrDown"
+        @mouseup="onPtrUp"
         @mouseleave="onPtrLeave"
         @click="isToggled = !isToggled"
     >
         <!-- youtube video thumbnail -->
-        <img
-            class="flex-initial w-64 h-48 transition ease-in-out rounded"
-            style="position: absolute;"
-            :src="thumbnail"
-            v-if="isToggled"
-            alt="youtube video thumbnail"
-        />
+        <div class="">
+            <img
+                class="w-64 h-48 transition ease-in-out rounded"
+                style="position: absolute;"
+                :src="thumbnail"
+                v-if="isToggled"
+                alt="youtube video thumbnail"
+            />
+        </div>
         <!-- showing btn -->
         <div
             class="
@@ -25,12 +28,8 @@
         >
             {{ title }}
         </div>
-        <div
-            class="
-                flex-initial
-            "
-        >
-            <!-- open url tab -->
+        <!-- open url tab -->
+        <div>
             <div
                 class="
                     transition-opaicty ease-in-out duration-300
@@ -68,6 +67,12 @@ const props = defineProps<{
 const isToggled = ref(false);
 const isActive = ref(false);
 const isIconActive = ref(false);
+const onPtrDown = () => {
+    isActive.value = true;
+};
+const onPtrUp = () => {
+    
+};
 const onPtrLeave = () => {
     isToggled.value = false;
     isActive.value = false;

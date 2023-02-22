@@ -1,6 +1,6 @@
 <template>
     <div
-        class="mb-6"
+        class="w-1/2 mb-6 pt-16"
         style="cursor: pointer;"
         @click="openChannel"
         @mouseover="isActive = true"

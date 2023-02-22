@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="w-full h-full">
         <NuxtLayout name="default" />
         <div class="grid grid-cols-1 gap-4">
             <ContentList
