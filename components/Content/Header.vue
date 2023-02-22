@@ -8,7 +8,7 @@
     >
         <!-- youtube icon -->
         <div
-            class="flex sm:justify-center -mb-4"
+            class="flex justify-center -mb-4"
             :class="isActive ? 'animate-bounce duration-500' : ''"
         >
             <img src="@/static/youtube.png" @click="openChannel" />
@@ -16,27 +16,24 @@
         <!-- title text -->
         <div
             class="
-                place-items-center
-                container content-center
                 font-bold text-center
                 w-32 h-34 shadow-lg rounded bg-blue-400
-                mb-8
-                p-3
-                w-auto
+                mb-8 p-3 w-auto
             "
         >
-            유튜브 프로젝트
+            Flux Hunter
         </div>
-        <div>
+        <div
+            class="
+                flex justify-center
+                rounded-full
+            "
+        >
             <img
-                class="
-                    place-items-center
-                    container content-center
-                    rounded-full
-                    -mt-8
-                "
+                class="rounded-full -mt-10"
                 :class="isActive ? 'animate-spin' : ''"
-                :src="thumbnail"
+                src="@/static/ownerProfile.jpg"
+                style="width: 60px; height: 60px;"
                 alt="youtube channel thumbnail"
             />
         </div>
