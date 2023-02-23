@@ -31,7 +31,6 @@ const list = ref<{ title: string; ele: string; id: string; }[]>([]);
 ContentBundle.list.map( item => list.value.push(item) );
 list.value.reverse();
 const openModal = (idx: number) => {
-    console.log('idx from openModal: ', idx);
     if(isOpen.value) return;
     isOpen.value = true;
     contentIdx.value = idx;

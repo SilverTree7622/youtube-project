@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-row justify- items-center w-auto bg-green"
+        class="flex flex-row items-center w-auto bg-green"
         @mouseenter="onPtrEnter"
         @mouseleave="onPtrLeave"
         @click="isToggled = !isToggled"
