@@ -1,0 +1,1 @@
+import{a as e,o,m as a}from"./entry.e38fc914.js";const n=e({__name:"Crazy",setup(r){return console.log("crazy form layout file called"),(l,t)=>(o(),a("div",null," crazy form layout "))}});export{n as default};
