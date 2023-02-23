@@ -5,11 +5,12 @@
             <ContentList
                 v-for="(item, idx) in list"
                 :ref="el => listRef.push(el)"
+                :idx="idx"
                 :key="item.title + idx"
                 :name="item.title"
                 :title="item.title"
                 :id="item.id"
-                @click="openModal(idx)"
+                :openModal="openModal"
             />
         </div>
         <ContentModal
@@ -30,6 +31,7 @@ const list = ref<{ title: string; ele: string; id: string; }[]>([]);
 ContentBundle.list.map( item => list.value.push(item) );
 list.value.reverse();
 const openModal = (idx: number) => {
+    console.log('idx from openModal: ', idx);
     if(isOpen.value) return;
     isOpen.value = true;
     contentIdx.value = idx;
