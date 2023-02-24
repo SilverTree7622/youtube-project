@@ -16,8 +16,10 @@
         <ContentModal
             v-if="isOpen"
             :name="list[contentIdx].ele"
+            :title="list[contentIdx].title"
             :onClose="closeModal"
         />
+
     </div>
 </template>
 
