@@ -7,10 +7,30 @@
                 w-full h-full bg-black opacity-50
             "
         ></div>
-        
 
+        <!-- pending spinner -->
+        <div
+            v-if="isPending"
+            role="status"
+            class="
+                absolute top-0 left-0 right-0 bottom-0
+                flex items-center justify-center
+            "
+        >
+            <svg
+                aria-hidden="true"
+                class="inline w-[8vw] h-[8vw] text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"
+            >
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+        
         <!-- Main modal -->
         <div
+            v-if="!isPending"
             class="
                 outline-none
                 flex items-center justify-center
@@ -24,14 +44,14 @@
             <!-- Modal content -->
             <div
                 class="
-                    relative h-[calc(100%-1rem)] w-auto translate-y-[-50px] transition-all duration-300 ease-in-out min-[576px]:mt-7 min-[576px]:h-[calc(100%-3.5rem)]
-                    w-full max-w-2xl
+                    relative transition-all duration-300 ease-in-out
+                    w-full max-w-2xl h-auto
                 "
             >
                 <div class="
                         relative bg-white rounded-lg shadow
                         dark:bg-gray-700 flex flex-col
-                        max-h-[100%]
+                        h-full
                     "
                 >
                     <!-- x close btn -->
@@ -43,35 +63,69 @@
                             rounded-lg text-sm p-1.5 ml-auto inline-flex
                         "
                         type="button"
-                        @click="onClose"
                         data-modal-hide="defaultModal"
+                        @click="onClose"
                     >
-                        <svg aria-hidden="true" class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg
+                            aria-hidden="true" class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                        >
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
-                    <!-- list component -->
+                    <!-- title & list component -->
                     <div
                         class="
                             dark:text-white
-                            text-xl font-semibold text-gray-900 p-4
+                            text-xl font-semibold text-gray-900
                         "
                     >
-                        <div class="w-full text-center">
+                        <div
+                            class="
+                                w-full text-center
+                                border-b border-gray-200 dark:border-gray-600 rounded-b
+                                p-4
+                            "
+                        >
                             {{ title }}
                         </div>
                         <component
                             class="
-                                relative overflow-y-auto p-4
+                                overflow-y-auto
+                                h-[70vh] p-2
                             "
                             :is="context"
                         />
                     </div>
                     <!-- Modal footer -->
-                    <div class="inline-block flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                        <button data-modal-hide="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    <div
+                        class="
+                            inline-block flex items-center p-2 space-x-2
+                            dark:border-gray-600 border-t border-gray-200 rounded-b
+                            w-full min-h-[10vh]
+                        "
+                    >
+                        <!-- <button
+                            data-modal-hide="defaultModal"
+                            type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            @click="onClose"
+                        >
+                            ㅇㅇ
+                        </button> -->
+                        <button
+                            data-modal-hide="defaultModal"
+                            type="button"
+                            class="
+                                text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none
+                                focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5
+                                hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500
+                                dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600
+                            "
+                            @click="onClose"
+                        >
+                            ㄴㄴ
+                        </button>
                     </div>
                 </div>
             </div>
@@ -80,11 +134,23 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, resolveComponent } from 'vue';
+import { defineAsyncComponent, onMounted, ref, resolveComponent } from 'vue';
 const props = defineProps<{
     name: string;
     title: string;
     onClose: () => void;
 }>();
-const context = defineAsyncComponent(() => import(`@/components/Content/Bundle/${props.name}.vue`));
+const isPending = ref(true);
+const context = defineAsyncComponent(() => import(`@/components/Content/Bundle/${props.name}.vue`) );
+
+onMounted(() => {
+    isPending.value = false;
+    const closeKeyEvt = (evt) => {
+        if (evt.keyCode !== 27) return;
+        props.onClose();
+        window.removeEventListener('keydown', closeKeyEvt);
+    };
+    window.removeEventListener('keydown', closeKeyEvt);
+    window.addEventListener('keydown', closeKeyEvt);
+});
 </script>
