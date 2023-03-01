@@ -49,7 +49,7 @@
                 "
             >
                 <div class="
-                        relative bg-white rounded-lg shadow
+                        relative bg-white rounded-t-lg shadow
                         dark:bg-gray-700 flex flex-col
                         h-full
                     "
@@ -61,6 +61,7 @@
                             hover:bg-gray-200 hover:text-gray-900
                             dark:hover:bg-gray-600 dark:hover:text-white
                             rounded-lg text-sm p-1.5 ml-auto inline-flex
+                            z-10
                         "
                         type="button"
                         data-modal-hide="defaultModal"
@@ -82,9 +83,9 @@
                     >
                         <div
                             class="
-                                w-full text-center
                                 border-b border-gray-200 dark:border-gray-600 rounded-b
-                                p-4
+                                text-center
+                                pb-3 -mt-10
                             "
                         >
                             {{ title }}
@@ -97,39 +98,39 @@
                             :is="context"
                         />
                     </div>
-                    <!-- Modal footer -->
-                    <div
-                        class="
-                            inline-block flex items-center p-2 space-x-2
-                            dark:border-gray-600 border-t border-gray-200 rounded-b
-                            w-full min-h-[10vh]
-                        "
-                    >
-                        <!-- <button
-                            data-modal-hide="defaultModal"
-                            type="button"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            @click="onClose"
-                        >
-                            ㅇㅇ
-                        </button> -->
-                        <button
-                            data-modal-hide="defaultModal"
-                            type="button"
-                            class="
-                                text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none
-                                focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5
-                                hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500
-                                dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600
-                            "
-                            @click="onClose"
-                        >
-                            ㄴㄴ
-                        </button>
-                    </div>
                 </div>
-            </div>
-        </div>
+                <!-- Modal footer -->
+                <div
+                    class="
+                        inline-block flex items-center p-2 space-x-2
+                        dark:border-gray-600 border-t border-gray-200 rounded-b
+                        w-full min-h-[10vh]  dark:bg-gray-700 
+                    "
+                >
+                    <!-- <button
+                        data-modal-hide="defaultModal"
+                        type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        @click="onClose"
+                    >
+                        ㅇㅇ
+                    </button> -->
+                    <button
+                        data-modal-hide="defaultModal"
+                        type="button"
+                        class="
+                            text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none
+                            focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5
+                            hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500
+                            dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600
+                        "
+                        @click="onClose"
+                    >
+                        ㄴㄴ
+                    </button>
+                </div> <!-- modal footer ender -->
+            </div> <!-- modal content ender -->
+        </div> <!-- main modal ender -->
     </div>
 </template>
 
